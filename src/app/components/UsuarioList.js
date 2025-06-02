@@ -8,10 +8,10 @@ export default function UsuarioList({ usuarios, onEdit, onDelete, isLoading }) {
   const [sortBy, setSortBy] = useState('createdAt');
   const [sortOrder, setSortOrder] = useState('desc');
   const [deletingId, setDeletingId] = useState(null);
-  const [currentDate, setCurrentDate] = useState(null); // ← NUEVO: Fecha actual del cliente
-  const [isClient, setIsClient] = useState(false); // ← NUEVO: Bandera de cliente
+  const [currentDate, setCurrentDate] = useState(null); 
+  const [isClient, setIsClient] = useState(false); 
 
-  // ← NUEVO: Establecer fecha actual solo en el cliente
+  // Establecer fecha actual solo en el cliente
   useEffect(() => {
     setCurrentDate(new Date());
     setIsClient(true);
@@ -60,7 +60,6 @@ export default function UsuarioList({ usuarios, onEdit, onDelete, isLoading }) {
     });
 
   const handleDelete = async (usuario) => {
-    // ← MEJORADO: Verificar que estamos en el cliente
     if (typeof window === 'undefined') return;
     
     const confirmDelete = window.confirm(
@@ -79,11 +78,11 @@ export default function UsuarioList({ usuarios, onEdit, onDelete, isLoading }) {
     }
   };
 
-  // ← MEJORADO: Formateo de fecha más consistente
+  // Formateo de fecha
   const formatDate = (dateString) => {
     try {
       const date = new Date(dateString);
-      // Usar toLocaleDateString con configuración específica
+      
       return date.toLocaleDateString('es-ES', {
         year: 'numeric',
         month: 'long',
@@ -94,7 +93,6 @@ export default function UsuarioList({ usuarios, onEdit, onDelete, isLoading }) {
     }
   };
 
-  // ← CORREGIDO: Calcular edad solo cuando tenemos la fecha actual del cliente
   const calculateAge = (dateString) => {
     if (!currentDate) return '...'; // Mostrar placeholder mientras carga
     
@@ -132,7 +130,7 @@ export default function UsuarioList({ usuarios, onEdit, onDelete, isLoading }) {
         </h3>
       </div>
 
-      {/* Controles de filtrado y búsqueda */}
+      {/* Opciones de filtrado y búsqueda */}
       <div className="row mb-3">
         <div className="col-md-4 mb-2">
           <label htmlFor="search" className="form-label">Buscar usuarios</label>
@@ -236,7 +234,7 @@ export default function UsuarioList({ usuarios, onEdit, onDelete, isLoading }) {
                     <div className="mb-3">
                       <small className="text-muted">
                         <i className="bi bi-person-badge me-1"></i>
-                        Edad: {/* ← MEJORADO: Mostrar placeholder mientras carga */}
+                        Edad: 
                         {isClient ? `${calculateAge(usuario.fechanac)} años` : 'Calculando...'}
                       </small>
                     </div>

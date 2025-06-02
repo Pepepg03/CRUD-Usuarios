@@ -1,6 +1,6 @@
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './components/Footer'; // Componente separado
+import Footer from './components/Footer';
 
 export const metadata = {
   title: 'CRUD Usuarios - Gestión de Usuarios',

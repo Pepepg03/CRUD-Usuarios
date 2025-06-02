@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 export default function Footer() {
-  const [currentYear, setCurrentYear] = useState(2024); // Valor por defecto
+  const [currentYear, setCurrentYear] = useState(2025); 
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
